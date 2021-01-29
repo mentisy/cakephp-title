@@ -64,8 +64,12 @@ Configure::write('App', [
     ],
 ]);
 
+if (!getenv('db_dsn')) {
+    putenv('db_dsn=sqlite:///:memory:');
+}
+
 Cake\Datasource\ConnectionManager::setConfig('test', [
-    'host' => 'localhost',
+    'url' => getenv('db_dsn'),
     'username' => 'root',
     'password' => 'root',
     'database' => 'title',
