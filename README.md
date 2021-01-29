@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/github/workflow/status/cakephp/app/CakePHP%20App%20CI/master?style=flat-square)](https://github.com/cakephp/app/actions)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+![Title Plugin CI](https://github.com/mentisy/cakephp-title/workflows/Title%20Plugin%20CI/badge.svg)
 
 A plugin to automatically generate titles for web pages using routes from the HTTP request url.
 
