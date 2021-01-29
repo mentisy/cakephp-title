@@ -15,6 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         php-version: ['7.4']
+        db-type: [sqlite, mysql]
     name: PHP ${{ matrix.php-version }}
 
     steps:
@@ -22,11 +23,17 @@ jobs:
       with:
         fetch-depth: 1
 
+    - name: Setup Service
+      if: matrix.db-type == 'mysql'
+      run: |
+        sudo service mysql start
+        mysql -h 127.0.0.1 -u root -proot -e 'CREATE DATABASE title;'
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-version }}
-        extensions: mbstring, intl
+        extensions: mbstring, intl, pdo_${{ matrix.db-type }}
         coverage: none
 
     - name: composer install
@@ -40,6 +47,8 @@ jobs:
 
     - name: Run PHPUnit
       run: |
+          if [[ ${{ matrix.db-type }} == 'sqlite' ]]; then export DB_URL='sqlite:///:memory:'; fi
+          if [[ ${{ matrix.db-type }} == 'mysql' ]]; then export DB_URL='mysql://root:root@127.0.0.1/cakephp'; fi
           vendor/bin/phpunit
 
   coding-standard:

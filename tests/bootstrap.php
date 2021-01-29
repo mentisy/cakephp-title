@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Cake\Core\Configure;
 use Cake\Database\Connection;
-use Cake\Database\Driver\Mysql;
+use Cake\Database\Driver\Sqlite;
 use Cake\Datasource\ConnectionManager;
 use Cake\Filesystem\Folder;
 
@@ -67,10 +67,10 @@ Configure::write('App', [
 Cake\Datasource\ConnectionManager::setConfig('test', [
     'host' => 'localhost',
     'username' => 'root',
-    'password' => '',
-    'database' => 'tools_title',
+    'password' => 'root',
+    'database' => 'title',
     'className' => Connection::class,
-    'driver' => Mysql::class,
+    'driver' => Sqlite::class,
     'persistent' => false,
     'timezone' => 'UTC',
     'encoding' => 'utf8',
