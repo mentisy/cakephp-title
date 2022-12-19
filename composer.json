@@ -11,7 +11,7 @@
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^4.2",
         "phpunit/phpunit": "~8.5.0 || ^9.3",
-        "phpstan/phpstan": "^0.12.30"
+        "phpstan/phpstan": "^1.9"
     },
     "autoload": {
         "psr-4": {
