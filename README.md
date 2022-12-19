@@ -9,6 +9,12 @@ This plugin will automatically generate a working title using values such as the
 
 You can set our own format by configuring the Component when loading it in your application.
 
+## Version map:
+| Plugin | Branch | Cake | PHP |
+|--------| ------ | --- | --- |
+| 2.x    | main | 5.x | ^8.1 |
+| 1.x    | 1.x | 4.x | ^7.4 \| ^8.0 |
+
 ### Configuration options:
 * `format` - How the generated title should be formatted. See valid placeholders below.
     * Default format: `{{prefix} - }{{controller} - }{{action} - }{{displayField}}{ &raquo; {appName}}`
