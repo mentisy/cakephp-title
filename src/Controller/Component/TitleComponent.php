@@ -120,7 +120,7 @@ class TitleComponent extends Component
             return implode(' - ', array_map(fn ($field) => (string)$entity->get($field), $displayField));
         }
 
-        return (string)$entity->get($displayField) ?? '';
+        return (string)$entity->get($displayField);
     }
 
     /**
