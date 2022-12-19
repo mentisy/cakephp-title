@@ -5,7 +5,7 @@ use Cake\Core\Configure;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Sqlite;
 use Cake\Datasource\ConnectionManager;
-use Cake\Filesystem\Folder;
+use Cake\TestSuite\Fixture\SchemaLoader;
 
 $findRoot = function ($root) {
     do {
@@ -86,11 +86,6 @@ Cake\Datasource\ConnectionManager::setConfig('test', [
 
 ConnectionManager::alias('test', 'default');
 
-$tmp = new Folder(TMP);
-$tmp->create(TMP . 'cache/models', 0777);
-$tmp->create(TMP . 'cache/persistent', 0777);
-$tmp->create(TMP . 'cache/views', 0777);
-
 $cache = [
     'default' => [
         'engine' => 'File',
@@ -114,3 +109,5 @@ $cache = [
 Cake\Cache\Cache::setConfig($cache);
 
 session_id('cli');
+
+(new SchemaLoader())->loadSqlFiles(ROOT . DS . 'tests' . DS . 'schema.sql');
