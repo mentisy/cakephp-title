@@ -29,7 +29,7 @@ class TitleComponent extends Component
      * - ignoreIndex : Whether to omit the controller action in the format if the requested action is index
      * - showDisplayFieldOnView : Whether to append the displayField when the requested controller action is view
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $_defaultConfig = [
         'appName' => '',
