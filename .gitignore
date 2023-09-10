@@ -23,6 +23,7 @@ Thumbs.db
 composer.lock
 # PHPUnit
 .phpunit.result.cache
+.phpunit.cache
 # vim
 *~
 *.swp
