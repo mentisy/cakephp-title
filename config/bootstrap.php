@@ -1,3 +1,3 @@
 <?php
 
-require CAKE . 'functions.php';
+require CAKE . 'src/functions.php';
