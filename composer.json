@@ -16,20 +16,14 @@
     "autoload": {
         "psr-4": {
             "Avolle\\Title\\": "src"
-        },
-        "files": [
-            "vendor/cakephp/cakephp/src/functions.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "Avolle\\Title\\Test\\": "tests",
             "Avolle\\Title\\Test\\Fixture\\": "tests",
             "TestApp\\": "tests/test_app/TestApp"
-        },
-        "files": [
-            "vendor/cakephp/cakephp/src/functions.php"
-        ]
+        }
     },
     "scripts": {
         "check": [
