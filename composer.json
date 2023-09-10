@@ -6,24 +6,30 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "cakephp/cakephp": "^5.x-dev@dev"
+        "cakephp/cakephp": "^5.0.0"
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^5.0",
-        "phpunit/phpunit": "^9.5",
-        "phpstan/phpstan": "^1.9"
+        "phpunit/phpunit": "^10.1.0",
+        "phpstan/phpstan": "^1.10.33"
     },
     "autoload": {
         "psr-4": {
             "Avolle\\Title\\": "src"
-        }
+        },
+        "files": [
+            "vendor/cakephp/cakephp/src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Avolle\\Title\\Test\\": "tests",
             "Avolle\\Title\\Test\\Fixture\\": "tests",
             "TestApp\\": "tests/test_app/TestApp"
-        }
+        },
+        "files": [
+            "vendor/cakephp/cakephp/src/functions.php"
+        ]
     },
     "scripts": {
         "check": [
