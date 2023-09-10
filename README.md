@@ -10,10 +10,10 @@ This plugin will automatically generate a working title using values such as the
 You can set our own format by configuring the Component when loading it in your application.
 
 ## Version map:
-| Plugin | Branch | Cake | PHP |
-|--------| ------ | --- | --- |
-| 2.x    | main | 5.x | ^8.1 |
-| 1.x    | 1.x | 4.x | ^7.4 \| ^8.0 |
+| Plugin | Branch | Cake | PHP          |
+|--------|--------|------|--------------|
+| 2.x    | main   | 5.x  | ^8.1         |
+| 1.x    | 1.x    | 4.x  | ^7.4 \| ^8.0 |
 
 ### Configuration options:
 * `format` - How the generated title should be formatted. See valid placeholders below.
@@ -29,7 +29,7 @@ You can set our own format by configuring the Component when loading it in your 
 * `action` - Will be replaced by the requested action
 * `prefix` - Will be replaced by the requested prefix, if there is one.
 * `displayField` - If your action stores an entity variable in the view, the component attempts to get the entity's display field value to display in the title
-    * For example: If you have a table called Tools and the display field is the tool's name, if will place the tool's name in the title.
+    * For example: If you have a table called Tools and the display field is the tool's name, it will place the tool's name in the title.
     * The display field value is not fetched on its own from the database. It attempts to find a view var in which to get the value from.
     * Please note that the entity variable must be named using cake's convention. A Tool entity variable must be `$tool`. A FilesType entity must be named `$filesType`.
 
