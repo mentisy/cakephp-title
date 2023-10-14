@@ -22,9 +22,9 @@ class TitleComponentIntegrationTest extends TestCase
     /**
      * Fixtures
      *
-     * @var array
+     * @var string[]
      */
-    public $fixtures = [
+    public array $fixtures = [
         'plugin.Avolle/Title.FilesTypes',
         'plugin.Avolle/Title.Locations',
         'plugin.Avolle/Title.Monitoring',

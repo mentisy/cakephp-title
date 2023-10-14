@@ -23,15 +23,15 @@ class TitleComponent extends Component
      *    - {{appName}}: Replaced with the application's name
      *    - {{prefix}}: Replaced with the requested prefix (eg. Admin)
      *    - {{controller}}: Replaced with the requested controller (eg. Users)
-     *    - {{action}}: Replaced with the requested action (eg. View). If option ignoreIndex is true, the placeholder will be omitted.
-     *    - {{displayField}}: Replaced with the requested controller's related model's display field (eg. name from the UsersTable)
+     *    - {{action}}: Replaced with the requested action (e.g. View). If option ignoreIndex is true, the placeholder will be omitted.
+     *    - {{displayField}}: Replaced with the requested controller's related model's display field (e.g. name from the UsersTable)
      * - appName: Your application's name (human friendly)
      * - ignoreIndex : Whether to omit the controller action in the format if the requested action is index
      * - showDisplayFieldOnView : Whether to append the displayField when the requested controller action is view
      *
      * @var array<string, mixed>
      */
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         'appName' => '',
         'format' => '{{prefix} - }{{controller} - }{{action} - }{{displayField}}{ &raquo; {appName}}',
         'ignoreIndex' => false,
@@ -127,15 +127,15 @@ class TitleComponent extends Component
      * Get the Controller guesstimated related Model Class' Display Field
      *
      * @param string $model Model go get display field from
-     * @return string|string[]|null
+     * @return array<string>|string|null
      */
-    protected function getDisplayField(string $model)
+    protected function getDisplayField(string $model): array|string|null
     {
         return $this->getController()->getTableLocator()->get($model)->getDisplayField();
     }
 
     /**
-     * Return a "view var" guesstimated compatible string. Eg. Referees will return referee
+     * Return a "view var" guesstimated compatible string. E.g. Referees will return referee
      *
      * @param string $model Model to inflect
      * @return string
@@ -193,7 +193,7 @@ class TitleComponent extends Component
      */
     protected function replaceAttribute(string $attribute, string $replacement, string $title): string
     {
-        $isSpecialAttribute = strpos($title, '{{' . $attribute . '}}') === false;
+        $isSpecialAttribute = !str_contains($title, '{{' . $attribute . '}}');
 
         if (!$isSpecialAttribute) {
             return str_replace('{{' . $attribute . '}}', $replacement, $title);

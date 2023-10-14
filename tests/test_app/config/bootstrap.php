@@ -1,2 +1,3 @@
 <?php
-// Do nothing
+
+require 'config/bootstrap.php';

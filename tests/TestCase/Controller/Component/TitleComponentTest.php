@@ -35,7 +35,8 @@ class TitleComponentTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->registry = new ComponentRegistry(new LocationsController());
+        $request = new ServerRequest();
+        $this->registry = new ComponentRegistry(new LocationsController($request));
         $this->Title = new TitleComponent($this->registry);
     }
 

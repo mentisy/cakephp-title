@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Sqlite;
 use Cake\Datasource\ConnectionManager;
-use Cake\Filesystem\Folder;
+use Cake\TestSuite\Fixture\SchemaLoader;
 
 $findRoot = function ($root) {
     do {
@@ -40,7 +41,7 @@ define('CAKE_CORE_INCLUDE_PATH', ROOT . '/vendor/cakephp/cakephp');
 define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
 define('CAKE', CORE_PATH . 'src' . DS);
 
-require ROOT . '/vendor/cakephp/cakephp/src/basics.php';
+require ROOT . '/vendor/cakephp/cakephp/src/functions.php';
 require ROOT . '/vendor/autoload.php';
 
 Configure::write('debug', true);
@@ -68,7 +69,7 @@ if (!getenv('db_dsn')) {
     putenv('db_dsn=sqlite:///:memory:');
 }
 
-Cake\Datasource\ConnectionManager::setConfig('test', [
+ConnectionManager::setConfig('test', [
     'url' => getenv('db_dsn'),
     'username' => 'root',
     'password' => 'root',
@@ -85,11 +86,6 @@ Cake\Datasource\ConnectionManager::setConfig('test', [
 ]);
 
 ConnectionManager::alias('test', 'default');
-
-$tmp = new Folder(TMP);
-$tmp->create(TMP . 'cache/models', 0777);
-$tmp->create(TMP . 'cache/persistent', 0777);
-$tmp->create(TMP . 'cache/views', 0777);
 
 $cache = [
     'default' => [
@@ -111,6 +107,8 @@ $cache = [
     ],
 ];
 
-Cake\Cache\Cache::setConfig($cache);
+Cache::setConfig($cache);
 
 session_id('cli');
+
+(new SchemaLoader())->loadSqlFiles(ROOT . DS . 'tests' . DS . 'schema.sql');

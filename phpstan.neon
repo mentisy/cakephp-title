@@ -5,3 +5,5 @@ parameters:
     treatPhpDocTypesAsCertain: false
     paths:
         - src
+    bootstrapFiles:
+        - tests/bootstrap.php
