@@ -117,7 +117,7 @@ class TitleComponent extends Component
             return '';
         }
         if (is_array($displayField)) {
-            return implode(' - ', array_map(fn ($field) => (string)$entity->get($field), $displayField));
+            return implode(' - ', array_map(fn($field) => (string)$entity->get($field), $displayField));
         }
 
         return (string)$entity->get($displayField);
