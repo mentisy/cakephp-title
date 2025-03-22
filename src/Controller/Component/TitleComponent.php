@@ -42,7 +42,7 @@ class TitleComponent extends Component
      * If title not already set in the action, create and set a title based on controller, controller action and
      * controller related model class' display field (if action is view and option showDisplayFieldOnView is true
      *
-     * @param \Cake\Event\Event $event Event
+     * @param \Cake\Event\Event<\Cake\Controller\Controller> $event Event
      * @return void
      * @noinspection PhpUnusedParameterInspection
      */
@@ -105,7 +105,7 @@ class TitleComponent extends Component
      */
     protected function getDisplayFieldValue(): string
     {
-        $model = $this->getController()->getName();
+        $model = $this->getController()->fetchTable()->getAlias();
         $entityVar = $this->getEntityVar($model);
         $entity = $this->getEntity($entityVar);
         if (is_null($entity)) {
@@ -117,7 +117,7 @@ class TitleComponent extends Component
             return '';
         }
         if (is_array($displayField)) {
-            return implode(' - ', array_map(fn ($field) => (string)$entity->get($field), $displayField));
+            return implode(' - ', array_map(fn($field) => (string)$entity->get($field), $displayField));
         }
 
         return (string)$entity->get($displayField);

@@ -121,6 +121,21 @@ class TitleComponentIntegrationTest extends TestCase
     }
 
     /**
+     * Test testTitleWithNonDefaultTableName method
+     *
+     * If you have a controller that changes the `defaultTable` property, then this test will assert that works OK
+     *
+     * @return void
+     * @covers \Avolle\Title\Controller\Component\TitleComponent::formatTitle()
+     */
+    public function testTitleWithNonDefaultTableName(): void
+    {
+        $expected = '<title>Locations Aliases - View - Ålesund</title>';
+        $this->get(['controller' => 'LocationsAliases', 'action' => 'view', 1]);
+        $this->assertTitle($expected);
+    }
+
+    /**
      * Assert that title is set as expected
      * Will show actual title if assertion is wrong
      *
@@ -129,7 +144,7 @@ class TitleComponentIntegrationTest extends TestCase
      */
     protected function assertTitle(string $expected): void
     {
-        preg_match('/<title>.*?<\/title>/', (string)$this->_response, $matches);
+        preg_match('/<title>.*?<\/title>/', $this->_getBodyAsString(), $matches);
         $this->assertResponseContains($expected, 'Actual title: ' . ($matches[0] ?? 'No title found'));
     }
 }
