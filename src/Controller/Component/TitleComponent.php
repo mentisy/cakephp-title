@@ -42,7 +42,7 @@ class TitleComponent extends Component
      * If title not already set in the action, create and set a title based on controller, controller action and
      * controller related model class' display field (if action is view and option showDisplayFieldOnView is true
      *
-     * @param \Cake\Event\Event $event Event
+     * @param \Cake\Event\Event<\Cake\Controller\Controller> $event Event
      * @return void
      * @noinspection PhpUnusedParameterInspection
      */
