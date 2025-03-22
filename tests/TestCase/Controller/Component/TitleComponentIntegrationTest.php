@@ -144,7 +144,7 @@ class TitleComponentIntegrationTest extends TestCase
      */
     protected function assertTitle(string $expected): void
     {
-        preg_match('/<title>.*?<\/title>/', (string)$this->_response, $matches);
+        preg_match('/<title>.*?<\/title>/', $this->_getBodyAsString(), $matches);
         $this->assertResponseContains($expected, 'Actual title: ' . ($matches[0] ?? 'No title found'));
     }
 }
