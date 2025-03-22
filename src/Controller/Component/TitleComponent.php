@@ -105,7 +105,7 @@ class TitleComponent extends Component
      */
     protected function getDisplayFieldValue(): string
     {
-        $model = $this->getController()->getName();
+        $model = $this->getController()->fetchTable()->getAlias();
         $entityVar = $this->getEntityVar($model);
         $entity = $this->getEntity($entityVar);
         if (is_null($entity)) {
